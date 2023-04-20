@@ -31,7 +31,6 @@ router.post('/remove', async(req,res)=>{
 })
 
 //Function to update hardware
-
 router.post('/update', async(req,res)=>{
     const serial = req.body.SerialNo;
     const newName = req.body.updatedName;
