@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const LoanSchema = mongoose.Schema({
     Item:String,
     Person:String,
-    Status:String,
+    Status:Boolean,
     Date:String
 })
 

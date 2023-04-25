@@ -9,7 +9,6 @@ const DisplayStaff = ({name, department, officeNo, userID, SystemName, DesktopNo
             <p>Department: {department}</p>
             <p>Office Number: {officeNo}</p>
             <p> User ID:{userID}</p>
-            <p>System Name :{SystemName}</p>
             <p>Desktop Serial Number:{DesktopNo}</p>
             <p>Monitor Serial Number:{MonitorNo}</p>
             </div>

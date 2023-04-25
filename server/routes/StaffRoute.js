@@ -20,7 +20,6 @@ router.post('/add',async (req, res) => {
             Department:req.body.Department,
             OfficeNo:req.body.OfficeNo,
             UserId:req.body.UserId,
-            SystemName:req.body.SystemName,
             DesktopSerialNo:req.body.DesktopSerialNo,
             MonitorSerialNo:req.body.MonitorSerialNo
         })

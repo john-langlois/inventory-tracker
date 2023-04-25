@@ -4,8 +4,8 @@
     background-color: rgb(245, 245, 245);
     border: 2px solid rgba(176, 39, 39, 0);
     border-radius: 20px;
-    max-width:20vw;
-    margin: 1vh 1vw 1vh 1vw;
+    min-width:25vw;
+    margin: 2vh 2vw 1vh 2vw;
 }
 .header{
     border: 1px solid rgba(53, 52, 52, 0);
@@ -38,7 +38,7 @@
     max-height: 80vh;
     overflow:scroll;
     margin:1vh 3vw 3vh 3vw ;
-    width:90%;
+    width:93%;
     box-shadow: 0 0 6px rgb(174, 175, 175);
 }
 
