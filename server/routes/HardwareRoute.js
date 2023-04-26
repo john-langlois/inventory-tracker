@@ -1,6 +1,17 @@
 const router = require('express').Router();
 const Hardware = require('../models/HardwareModel')
 
+
+router.get('/all', async (req, res) => {
+    const items = await Hardware.find();
+    try{
+        res.status(200).json(items);
+    }
+    catch(err){
+        res.json({err:err.message})
+    }
+})
+
 //Function to add hardware
 router.post('/add',async (req, res) => {
     const newHardware = new Hardware({
@@ -19,11 +30,10 @@ router.post('/add',async (req, res) => {
 })
 
 //Function to remove hardware
-router.post('/remove', async(req,res)=>{
+router.post('/remove/:hardware', async(req,res)=>{
     try{
-        const serial = req.body.SerialNo;
-        await Hardware.findOneAndDelete({SerialNo:serial})
-        res.status(200).json(` Item with Serial Number: ${serial}, has been removed`)
+        await Hardware.findOneAndDelete({_id:req.params.hardware})
+        res.status(200).json("Item has been removed")
     }
     catch(err){
         res.json({err:err.message})

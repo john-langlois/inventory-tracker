@@ -5,8 +5,6 @@ import DisplayLoans from './DisplayLoans'
 const Loans = () => {
     const [item, setItem] = useState('');
     const [person, setPerson] = useState('');
-    const [returned, setReturned] = useState(false);
-    const [status, setStatus] = useState(false);
     const date = new Date().toLocaleString();
     const [loanData,setLoanData] = useState([]);
 
@@ -36,7 +34,7 @@ const Loans = () => {
         fetch('http://localhost:5000/loans/add', {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({item, person, status, date})
+            body: JSON.stringify({item, person, date})
     });
     window.location.reload();
 };
@@ -61,15 +59,6 @@ const getLoan = () =>{
     const setPersonName = (e) => {
         setPerson(e.target.value)
     }
-    //sets status of loan message
-    const setStatusMessage = () => {
-        if(!returned){
-            setStatus('In Use/Not Returned');
-        }
-        else{
-            setStatus('Returned');
-        }
-    }
 
   return (
     <div>
@@ -80,7 +69,7 @@ const getLoan = () =>{
             */}
             <input value = {item} onChange= {setItemName} className = "search_button" placeholder = "Item Name" />
             <input  value = {person} onChange = {setPersonName} className = "search_button" placeholder = "Person"/>
-            <button  onClick={handleSubmit} className='btn'>Add Loan</button>
+            <button  onClick={handleSubmit} className='loan-btn'>Add Loan</button>
         </form>
 
         <div className = "content">

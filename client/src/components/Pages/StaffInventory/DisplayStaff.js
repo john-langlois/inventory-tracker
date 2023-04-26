@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Staff.module.css'
 
-const DisplayStaff = ({name, department, officeNo, userID, SystemName, DesktopNo, MonitorNo }) =>{
+const DisplayStaff = ({name, department, officeNo, userID, SystemName, DesktopNo, MonitorNo, staffId,remove }) =>{
     return (
         <div className = {styles.track_row}>
             <div className = {styles.header}>
@@ -11,6 +11,7 @@ const DisplayStaff = ({name, department, officeNo, userID, SystemName, DesktopNo
             <p> User ID:{userID}</p>
             <p>Desktop Serial Number:{DesktopNo}</p>
             <p>Monitor Serial Number:{MonitorNo}</p>
+            <button  classname = {styles.remove_btn} value = {staffId} onClick={remove}>Remove Staff</button>
             </div>
         </div>
     )

@@ -5,81 +5,31 @@
   width: calc((100vw - 2*var(--padding)));
   padding: var(--padding);
 }
-.item-grid{
-    height: 70vh;
-    width: 80%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
-    margin: 10vh auto 5vh auto;
-    padding: 3vh;
-    border: 2px solid rgb(224, 224, 224);
-    border-radius: 10px;
-    box-shadow: 0 0 6px hsl(210 14% 90%);
-}
-.monitor-item{grid-area:1/1/1/1}
-.desktop-item{grid-area:1/2/1/2}
-.keyboard-item{grid-area:1/3/1/3}
-.webcam-item{grid-area:2/1/2/1}
-.microphone-item{grid-area:2/2/2/2}
-.laptop-item{grid-area:2/3/2/3}
-.list-item{grid-area:1/4/4/7}
 
 .hardware-grid{
-  height: 70vh;
+  height: 80vh;
   width: 90%;
   display:grid;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  margin: 10vh 5vw 5vh auto;
-  padding: 3vh;
+  margin: 1vh auto 2vh auto;
+  padding: 0vh;
   border: 2px solid rgb(224, 224, 224);
   border-radius: 10px;
   box-shadow: 0 0 6px hsl(210 14% 90%);
+  overflow: scroll;
+}
+.modal-button{
+ left: 4.5%;
+ margin-top: 1vh;
 }
 
-.float-container{
-  width:100%;
-  display:grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(1, 1fr);
-  grid-column-gap: 1vw;
-
-}
-.float-child-1{
- grid-area:1/2/1/2;
- margin: 10vh 2vw 5vh 2vw;
-}
-.float-child{
-  grid-area:1/2/1/2;
-  margin: 10vh 2vw 5vh 2vw;
-}
-
-.track_row{
-  font-size:20px;
-  display: flex;
-  background-color: rgb(244, 243, 243);
-  border: 1px solid rgba(197, 197, 197, 0);
-  box-shadow: 20px rgba(0, 0, 0, 0);
-  border-radius: 6px;
-  width:10vw;
-  margin: 1vh;
-
-}
-.search_button{
-  border: 1px rgba(240, 7, 7, 0);
-  width:8vw;
-  height:3vh;
+.hardware-search{
+  border: 1px solid rgba(0, 0, 0, 0);
+  width:25vw;
+  height:2vh;
   border-radius: 5px;
-  margin:1vh;
-}
-.header{
-  display: flex;
-  flex-direction: row;
-  margin:0.1vh;
-  gap:10px;
+  margin:2vh 0 0 10vw;
 }
 
 .hardware{
@@ -89,9 +39,8 @@
   background-color: rgb(250, 250, 247);
   text-align: center;
   height:max-content;
-  max-height: 80vh;
-  overflow:scroll;
-  margin:3vh 0.5vw 1vh 0.5vw ;
+  max-height: 90vh;
+  margin:1vh 0 1vh 0 ;
   width:auto;
   box-shadow: 0 0 6px hsl(210 14% 90%);
 }

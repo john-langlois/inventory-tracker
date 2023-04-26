@@ -79,7 +79,7 @@ const StaffInventory = ()=>{
             <Button variant="contained" color="primary" onClick={handleOpen}>
                 Create New
             </Button>
-            <Dialog open={open} onClose={handleClose}>
+        <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Add New Staff Member</DialogTitle>
       <DialogContent>
       <TextField
