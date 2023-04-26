@@ -48,7 +48,13 @@ const getLoan = () =>{
     //function that is called when loan is added
     const handleSubmit = (e) => {
         e.preventDefault();
-        addLoan();
+        if(item !== '' || person !== ''){
+            addLoan();
+        }
+        else{
+            alert("Please fill out all fields");
+        }
+        
     }
 
     //sets item name 

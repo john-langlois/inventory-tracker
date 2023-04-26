@@ -77,7 +77,6 @@ const StaffInventory = ()=>{
 
       const handleSubmit = () => {
         if(name !== '' && department !== '' && officeNo !== '' && userID !== '' && desktopSerialNo !== '' && monitorSerialNo !== ''){
-            console.log(name, department, officeNo, userID, desktopSerialNo, monitorSerialNo)
             addStaff();
             handleClose();
         }

@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Hardware = require('../models/HardwareModel')
 
 
-router.get('/all', async (req, res) => {
+router.get('/', async (req, res) => {
     const items = await Hardware.find();
     try{
         res.status(200).json(items);
@@ -58,5 +58,54 @@ router.post('/update', async(req,res)=>{
         res.json({err:err.message})
     }
 })
+
+router.get('/name/:name', async(req,res)=>{
+    try{
+        const hardware = await Hardware.find();
+        const result =  handleNameSearch(req.params.name, hardware);
+        res.status(200).json(result)
+    }
+    catch(err){
+        res.json({err:err.message})
+    }
+})
+
+router.get('/category/:category', async(req,res)=>{
+    try{
+        const hardware = await Hardware.find();
+        const result =  handleCategorySearch(req.params.category, hardware);
+        res.status(200).json(result)
+    }
+    catch(err){
+        res.json({err:err.message})
+    }
+});
+
+const handleCategorySearch = function(input, array){
+    const resultArr = [];
+    const keywords = input.split(/[.\-=/_,]/);
+
+    array.forEach(item =>{
+        keywords.forEach(value =>{
+            if(item.Category.toLowerCase().includes(value.toLowerCase())){
+                resultArr.push(item);
+            }
+        })
+    })
+    return resultArr;
+};
+const handleNameSearch = function(input, array){
+    const resultArr = [];
+    const keywords = input.split(/[.\-=/_,]/);
+
+    array.forEach(item =>{
+        keywords.forEach(value =>{
+            if(item.Name.toLowerCase().includes(value.toLowerCase())){
+                resultArr.push(item);
+            }
+        })
+    })
+    return resultArr;
+};
 
 module.exports = router;

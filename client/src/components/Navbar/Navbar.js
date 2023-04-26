@@ -13,7 +13,6 @@ const Navbar = () => {
                 <Link to = "/staff-inventory"><button className = {styles.white_btn}> Staff Inventory</button></Link>
                 <Link to = "/hard-inventory"><button className = {styles.white_btn}>Hardware Inventory</button></Link>
                 <Link to = "/loans"><button className = {styles.white_btn}>Loans</button></Link>
-                <Link to = "/settings"><button className = {styles.white_btn}>Settings</button></Link>
             </div>
 	);
 };

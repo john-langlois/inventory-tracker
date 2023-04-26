@@ -17,10 +17,13 @@ function DisplayHardware() {
     const [name, setName] = useState('');
     const [serialNo, setSerialNo] = useState('');
     const [error, setError] = useState(false);
+    const [nameSearch, setNameSearch] = useState('');
+    const [categorySearch, setCategorySearch] = useState('');
+    const [query, setQuery] = useState('');
 
     useEffect(() => {
         getHardware();
-    }, []);
+    }, [query]);
     
     const handleOpen = () => setOpen(true);
     const handleClose = () =>{
@@ -49,7 +52,7 @@ function DisplayHardware() {
     }
 
     const getHardware = () => {
-        fetch('http://localhost:5000/hardware/all',{method: 'GET'})
+        fetch(`http://localhost:5000/hardware/${query}`,{method: 'GET'})
         .then(response => response.json())
         .then(data => setHardware(data))
     }
@@ -63,19 +66,55 @@ function DisplayHardware() {
     window.location.reload();
 };
 
-const removeHardware = async(event)=>{
-    const value = event.target.getAttribute('value');
-    await fetch(`http://localhost:5000/hardware/remove/${value}`,{method: 'POST'});
-    window.location.reload();
-}
+    const removeHardware = async(event)=>{
+        const value = event.target.getAttribute('value');
+        await fetch(`http://localhost:5000/hardware/remove/${value}`,{method: 'POST'});
+        window.location.reload();
+    }
+
+    const handleNameSearchChange = (e) =>{
+        setNameSearch(e.target.value);
+    }
+
+    const handleCategorySearchChange = (e) =>{
+        setCategorySearch(e.target.value);
+    }
+
+    const getNameSearch = (e) =>{
+        e.preventDefault();
+        setQuery('name/'+nameSearch);
+        setNameSearch('');
+    }
+
+    const getCategorySearch = (e) =>{
+        e.preventDefault();
+        setQuery('category/'+ categorySearch);
+        setNameSearch('');
+    }
+
+    const handleRefresh = () =>{
+        setQuery('');
+        window.location.reload();
+    }
 
     return(
         <div>
-            <Button  className = "modal-button" variant="contained" color="primary" onClick={handleOpen}>
+            <div className = "search-container">
+                <form className = "form" onSubmit={getNameSearch}>
+                <input value = {nameSearch} onChange = {handleNameSearchChange} className = "hardware-search" placeholder = "Search by Hardware Name.."/>
+            </form>
+            <form className = "form" onSubmit={getCategorySearch}>
+               <input value = {categorySearch} onChange={handleCategorySearchChange} className = "hardware-search" placeholder = "Search by Category.."/> 
+            </form>
+            
+            <Button style = {{marginRight:"2vw"}} className = "modal-button" variant="contained" color="primary" onClick={handleOpen}>
                 Create New Hardware Item
             </Button>
-            <input className = "hardware-search" placeholder = "Search by Hardware Name.."/>
-            <input className = "hardware-search" placeholder = "Search by Category.."/>
+            <Button  className = "modal-button" variant="contained" color="primary" onClick={handleRefresh}>
+                Get All
+            </Button>
+            </div>
+            
             <Dialog open={open} onClose={handleClose}>
                 <DialogTitle>Add New Hardware Item</DialogTitle>
                 <DialogContent>

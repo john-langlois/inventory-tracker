@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 80vh;
+  }
+
+  h1{
+    font-size:60px;
+  }
+  
+  .sections {
+    width: 80%;
+  }
+  
+  .section {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+  
+  .section h2 {
+    font-size: 2rem;
+    margin-bottom: 1px;
+  }
+  
+  .section p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  .footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .footer p {
+    font-size: 0.8rem;
+  }
+  

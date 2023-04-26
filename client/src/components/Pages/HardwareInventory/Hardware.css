@@ -20,16 +20,17 @@
   overflow: scroll;
 }
 .modal-button{
- left: 4.5%;
- margin-top: 1vh;
+ left: 5%;
+ margin-bottom:1vh ;
 }
 
 .hardware-search{
   border: 1px solid rgba(0, 0, 0, 0);
   width:25vw;
-  height:2vh;
+  height:3vh;
   border-radius: 5px;
-  margin:2vh 0 0 10vw;
+  margin:2vh 0 1vh 3vw;
+  box-shadow: 0 0 6px hsl(204, 5%, 80%);
 }
 
 .hardware{
@@ -48,4 +49,16 @@
 .hardware :hover{
 background-color:  rgb(239, 237, 237);
 cursor: pointer;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0;
 }

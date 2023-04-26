@@ -63,7 +63,8 @@
 	border: none;
 	outline: none;
 	padding: 5px 5px;
-	background-color: rgb(227, 240, 202);
+	background-color: rgb(240, 247, 228);
+  box-shadow: 0 0 6px rgb(221, 221, 221);
 	border-radius: 15px;
 	width: fit-content;
 	font-weight: bold;
@@ -72,7 +73,7 @@
 }
 
 .loan-btn:hover{
-  background-color: rgb(136, 249, 153);
+  background-color: rgb(190, 247, 199);
   cursor: pointer;
   
 }
