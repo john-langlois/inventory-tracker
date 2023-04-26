@@ -33,12 +33,13 @@
     border: 1px rgba(65, 16, 16, 0);
     width:50%;
     height:3vh;
-    min-width:10vw;
+    min-width:30vw;
     min-height:3vh;
     border-radius: 5px;
-    margin:2vh auto 1vh auto;
+    margin:3vh 35vw 1vh auto;
     box-shadow: 0 0 6px rgb(174, 175, 175);
 }
+
 
 .staff{
     border-radius:5px;

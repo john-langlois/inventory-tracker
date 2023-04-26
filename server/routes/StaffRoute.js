@@ -72,4 +72,30 @@ router.post('/update', async(req,res)=>{
     }
 })
 
+//function to get staff by name
+router.get('/name/:name', async(req,res)=>{
+    try{
+        const staff = await Staff.find()
+        const results  = handleStaffSearch(req.params.name, staff)
+        res.status(200).json(results)
+    }
+    catch(err){
+        res.json({err:err.message})
+    }
+});
+
+const handleStaffSearch = function(input, staff){
+    const resultArr = [];
+    const keywords = input.split(/[.\-=/_,]/)
+
+    staff.forEach(item =>{
+        keywords.forEach(value =>{
+            if(item.UserName.toLowerCase().includes(value.toLowerCase())){
+                resultArr.push(item);
+            }
+        })
+    })
+    return resultArr;
+};
+
 module.exports = router;

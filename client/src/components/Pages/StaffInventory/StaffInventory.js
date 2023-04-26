@@ -15,7 +15,9 @@ import {
 const StaffInventory = ()=>{
     const [staffInfo,setStaffInfo] = useState([]);
     const [open, setOpen] = useState(false);
+    const [query, setQuery] = useState('')
     const [name, setName] = useState('');
+    const [nameSearch, setNameSearch] = useState('');
     const [department, setDepartment] = useState('');
     const [officeNo, setOfficeNo] = useState('');
     const [userID, setUserID] = useState('');
@@ -24,14 +26,14 @@ const StaffInventory = ()=>{
     const [error,setError] = useState(false);
     
     useEffect(() => {
-        fetch('http://localhost:5000/staff',{
+        fetch(`http://localhost:5000/staff/${query}`,{
             method: 'GET'
         })
         .then(res=>res.json())
         .then(data => {
             setStaffInfo(data);
         })
-      }, []);
+      }, [query]);
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -84,14 +86,32 @@ const StaffInventory = ()=>{
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-   
 
+    const updateNameSearch = (e)=>{
+        setNameSearch(e.target.value);
+    }
+
+    const getNameSearch = (e)=>{
+        e.preventDefault();
+        setQuery('name/'+nameSearch);
+        setNameSearch('');
+    }
+
+    const handleRefresh = ()=>{
+        window.location.reload();
+    }
+   
     return(
         <>
         <Navbar/>
         <div className = {styles.search}>
-            <input className = {styles.search_button} placeholder = "Search by Staff Name..."/>
-            <Button variant="contained" color="primary" onClick={handleOpen}>
+            <form onSubmit = {getNameSearch}>
+                <input  value = {nameSearch} onChange={updateNameSearch}  className = {styles.search_button} placeholder = "Search by Staff Name..."/>
+            </form>
+            <Button className={styles.create_btn}  style = {{margin:"3vh 2vw 0 0", width:"10vw", height: "3vh"}}variant="contained" color="primary" onClick={handleRefresh}>
+                Get All Staff
+            </Button>
+            <Button className={styles.create_btn}  style = {{margin:"3vh 0 0 2vw",width:"10vw", height:"3vh"}}variant="contained" color="primary" onClick={handleOpen}>
                 Create New
             </Button>
         <Dialog open={open} onClose={handleClose}>
