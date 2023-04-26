@@ -11,7 +11,7 @@ const DisplayStaff = ({name, department, officeNo, userID, SystemName, DesktopNo
             <p> User ID:{userID}</p>
             <p>Desktop Serial Number:{DesktopNo}</p>
             <p>Monitor Serial Number:{MonitorNo}</p>
-            <button  classname = {styles.remove_btn} value = {staffId} onClick={remove}>Remove Staff</button>
+            <button  className = {styles.remove_btn} value = {staffId} onClick={remove}>Remove Staff</button>
             </div>
         </div>
     )

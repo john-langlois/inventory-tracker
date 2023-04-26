@@ -62,8 +62,8 @@
 .loan-btn {
 	border: none;
 	outline: none;
-	padding: 2px 10px;
-	background-color: rgb(238, 238, 238);
+	padding: 5px 5px;
+	background-color: rgb(227, 240, 202);
 	border-radius: 15px;
 	width: fit-content;
 	font-weight: bold;
@@ -71,7 +71,7 @@
   cursor: pointer;
 }
 
-button:hover{
+.loan-btn:hover{
   background-color: rgb(136, 249, 153);
   cursor: pointer;
   

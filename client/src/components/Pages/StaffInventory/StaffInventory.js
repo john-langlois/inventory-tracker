@@ -19,9 +19,19 @@ const StaffInventory = ()=>{
     const [department, setDepartment] = useState('');
     const [officeNo, setOfficeNo] = useState('');
     const [userID, setUserID] = useState('');
-    const [systemName, setSystemName] = useState('');
     const [desktopSerialNo, setDesktopSerialNo] = useState('');
     const [monitorSerialNo, setMonitorSerialNo] = useState('');
+    const [error,setError] = useState(false);
+    
+    useEffect(() => {
+        fetch('http://localhost:5000/staff',{
+            method: 'GET'
+        })
+        .then(res=>res.json())
+        .then(data => {
+            setStaffInfo(data);
+        })
+      }, []);
 
     const handleNameChange = (event) => {
         setName(event.target.value);
@@ -39,10 +49,6 @@ const StaffInventory = ()=>{
         setUserID(event.target.value);
       };
     
-      const handleSystemNameChange = (event) => {
-        setSystemName(event.target.value);
-      };
-    
       const handleDesktopSerialNoChange = (event) => {
         setDesktopSerialNo(event.target.value);
       };
@@ -50,26 +56,35 @@ const StaffInventory = ()=>{
       const handleMonitorSerialNoChange = (event) => {
         setMonitorSerialNo(event.target.value);
       };
+      const addStaff = ()=>{
+        fetch('http://localhost:5000/staff/add', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({Name: name, Department: department,OfficeNo: officeNo,UserId: userID,DesktopSerialNo: desktopSerialNo,MonitorSerialNo: monitorSerialNo})
+        })
+        window.location.reload();
+      }
+
+      const removeStaff = async(event)=>{
+        const value = event.target.getAttribute('value');
+        fetch(`http://localhost:5000/staff/remove/${value}`, {
+            method: 'POST'
+        })
+        window.location.reload();
+      }
 
       const handleSubmit = () => {
-        handleClose();
+        if(name !== '' && department !== '' && officeNo !== '' && userID !== '' && desktopSerialNo !== '' && monitorSerialNo !== ''){
+            console.log(name, department, officeNo, userID, desktopSerialNo, monitorSerialNo)
+            addStaff();
+            handleClose();
+        }
+        else{setError(true)}
       };
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
    
-
-    useEffect(() => {
-        fetch('http://localhost:5000/staff',{
-            method: 'GET'
-        })
-        .then(res=>res.json())
-        .then(data => {
-            setStaffInfo(data);
-            console.log(data[0])
-        })
-      }, []);
-    
 
     return(
         <>
@@ -115,14 +130,6 @@ const StaffInventory = ()=>{
           fullWidth
         />
         <TextField
-          label="System Name"
-          value={systemName}
-          onChange={handleSystemNameChange}
-          variant="outlined"
-          margin="dense"
-          fullWidth
-        />
-        <TextField
           label="Desktop Serial Number"
           value={desktopSerialNo}
           onChange={handleDesktopSerialNoChange}
@@ -140,6 +147,7 @@ const StaffInventory = ()=>{
         />
       </DialogContent>
       <DialogActions>
+        {error && <p> Please fill in all fields</p>}
         <Button onClick={handleClose} color="primary "variant="outlined"> 
           Cancel
         </Button>
@@ -159,6 +167,8 @@ const StaffInventory = ()=>{
                 userID = {item.UserID}
                 DesktopNo = {item.Desktop_SerialNo} 
                 MonitorNo = {item.Monitor_SerialNo}
+                remove = {removeStaff}
+                staffId = {item._id}
                 />
             ))}
         </div>

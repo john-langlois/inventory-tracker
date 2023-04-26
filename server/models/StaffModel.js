@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 
 const StaffSchema = mongoose.Schema({
-    Name:String,
-    Department:String,
+    UserName:String,
+    DepartmentName:String,
     OfficeNo:String,
     UserID:String,
-    SystemName:String,
-    DesktopSerialNo:String,
-    MonitorSerialNo:String
+    Desktop_SerialNo:String,
+    Monitor_SerialNo:String
 })
 
 module.exports = mongoose.model('Staff', StaffSchema);

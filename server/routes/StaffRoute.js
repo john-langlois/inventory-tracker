@@ -16,12 +16,12 @@ router.get('/', async(req, res) => {
 //Function to add Staff
 router.post('/add',async (req, res) => {
     const newStaff = new Staff({
-            Name:req.body.Name,
-            Department:req.body.Department,
+            UserName:req.body.Name,
+            DepartmentName:req.body.Department,
             OfficeNo:req.body.OfficeNo,
-            UserId:req.body.UserId,
-            DesktopSerialNo:req.body.DesktopSerialNo,
-            MonitorSerialNo:req.body.MonitorSerialNo
+            UserID:req.body.UserId,
+            Desktop_SerialNo:req.body.DesktopSerialNo,
+            Monitor_SerialNo:req.body.MonitorSerialNo
         })
     try{
         newStaff.save()
@@ -34,9 +34,9 @@ router.post('/add',async (req, res) => {
 })
 
 //Function to remove Staff
-router.post('/remove', async(req,res)=>{
+router.post('/remove/:staff', async(req,res)=>{
     try{
-        await Staff.findOneAndDelete({Person:req.body.person})
+        await Staff.findOneAndDelete({_id:req.params.staff})
         res.status(200).json("Staff has been removed")
     }
     catch(err){

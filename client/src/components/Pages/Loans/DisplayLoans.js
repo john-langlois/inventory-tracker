@@ -9,9 +9,9 @@ const DisplayLoans = ({Item, Person, Status, date, returned,notReturned,loanId,r
             <p> Loaned by: {Person}</p>
             <p> Return Status : {Status ? "Returned" : "In Use/Not Returned"}</p>
             <p> Loaned at: {date}</p>
-            {!Status ? <button  value = {loanId} onClick = {returned}>Returned</button> :
-            <button value = {loanId} onClick = {notReturned}>Not-Returned</button>}
-            <button value = {loanId} onClick = {remove}>Delete Loan</button>
+            {!Status ? <button className='loan-btn' value = {loanId} onClick = {returned}>Returned</button> :
+            <button className='loan-btn' value = {loanId} onClick = {notReturned}>Not-Returned</button>}
+            <button  className='loan-btn' value = {loanId} onClick = {remove}>Delete Loan</button>
         </div>    
     </div>
   )
